@@ -1,0 +1,9 @@
+<div *ngFor="let post of posts">
+  <h3>
+    {{post.athlete.name}}
+  </h3>
+  <video controls>
+    <source src="{{post.video.url}}">
+  </video>
+</div>
+<router-outlet></router-outlet>
