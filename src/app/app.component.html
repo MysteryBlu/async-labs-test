@@ -1,9 +1,43 @@
-<div *ngFor="let post of posts">
-  <h3>
-    {{post.athlete.name}}
-  </h3>
-  <video controls>
-    <source src="{{post.video.url}}">
-  </video>
+<div class="navbar">
+  <!--TODO: navbar-->
 </div>
+<div class="row">
+  <div class="col-3">
+  </div>
+  <div class="col-6">
+    <div style="text-align: end;">
+      <label>
+        Filter by:
+      </label>
+      <select [(ngModel)]="selectedSport" (ngModelChange)="onSportFilterChange()">
+        <option *ngFor="let sport of sports" [ngValue]="sport">
+          {{sport.name}}
+        </option>
+      </select>
+    </div>
+    <div *ngFor="let post of posts">
+      <div class="card">
+        <div class="card-title">
+          <h3>
+            {{post.author.name}}
+          </h3>
+          <div>
+            {{post.createdBefore}}
+          </div>
+        </div>
+        <div class="card-body">
+          <video controls poster="{{post.video.poster}}">
+            <source src="{{post.video.url}}">
+          </video>
+        </div>
+        <div style="text-align: left;">
+          {{post.views}}
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-3">
+  </div>
+</div>
+
 <router-outlet></router-outlet>
